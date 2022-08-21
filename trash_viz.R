@@ -40,7 +40,7 @@ year(data_sum$Week)<-0
 p2<-ggplot(data = data_sum, aes((Week), n, group=factor(year), colour=factor(year))) +
   geom_line()  +
   labs(x="Month", colour="Year", 
-  title = "311 Requests - Trash", y = "Number of Requests") + scale_x_date(date_labels = "%m") + theme_minimal() 
+  title = "311 Requests - Trash", y = "Number of Requests") + scale_x_date(date_labels = "%m") + theme_minimal() + scale_color_brewer(palette = "Set2") 
 p2
 
 ##########################recreate Haddadin's work#######################
