@@ -15,7 +15,6 @@ data$Week <-as.Date(cut(data$open_dt_ymd, breaks = "week", start.on.monday = FAL
 #create sums of each type at each date
 data_sum<-data %>% count(Week)
 data_sum$year<-format(as.Date(data_sum$Week, format="%Y/%m/%d"),"%Y")
-#year(data_sum$Week)<-0 
 data_sum<-subset(data_sum, data_sum$year > "2015")
 
 ####ggplot graph of total number of requests by day over time######
@@ -30,10 +29,11 @@ p1<-ggplotly(p1)
 p1
 
 ########ggplot of number of requests variation over the year###########
+year(data_sum$Week)<-0 
 p2<-ggplot(data = data_sum, aes((Week), n, group=factor(year), colour=factor(year))) +
   geom_line()  +
-  labs(x="Month", colour="Year", 
-       title = "311 Requests - Pests", y = "Number of Requests") + scale_x_date(date_labels = "%m") + theme_minimal() 
+  labs(x="Month", colour="Year", title = "311 Requests - Pests", y = "Number of Requests") + 
+scale_x_date(date_labels = "%m") + theme_minimal() + scale_color_brewer(palette = "Set2") 
 
 p2
 
