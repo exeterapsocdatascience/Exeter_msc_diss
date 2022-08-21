@@ -12,6 +12,7 @@ library(lmtest)
 library(Hmisc)
 library(foreign)
 library(car)
+library(RColorBrewer)
 
 ##########################Load and Clean Data########################
 data<-read.csv("~/Desktop/Dissertation/Code Enforcements/code_enforcements.csv")
@@ -119,5 +120,5 @@ model$moving[model$Week == "2020-03-15"] <- "#7570B3"
 
 ggplot(model, aes(x = Week, y = dif_total)) + 
   geom_bar(stat = "identity", fill = as.factor(model$moving)) +
-  scale_x_date(date_labels = "%Y") + 
+  scale_x_date(date_labels = "%Y") + scale_fill_brewer(palette = "Set2") +
   labs(title = "Difference between Total Model and Actual Volume", y = "Volume", x = "Year")
