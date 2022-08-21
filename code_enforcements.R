@@ -78,9 +78,10 @@ p3<-ggplot(data = data_test, aes(x = Week, y = n)) + geom_line(aes(color = descr
 p3
 
 #######Plotting enforcement trends over the year #######
-year(enforcsum$Week)<-0 #run before plotting p2
+year(enforcsum$Week)<-0 #run before plotting p3
 
 p4<-ggplot(data = enforcsum, aes((Week), n, group=factor(year), colour=factor(year))) + geom_line()  + labs(x="Month", colour="Year", 
-       title = "Code Enforcements Annual Trends", y = "Number of Violations") + scale_x_date(date_labels = "%m") + theme_minimal() 
+       title = "Code Enforcements Annual Trends", y = "Number of Violations") + 
+scale_x_date(date_labels = "%m") + theme_minimal() + scale_color_brewer(palette = "Set2") 
 
 p4
